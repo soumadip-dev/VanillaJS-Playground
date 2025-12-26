@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Library</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="h-100">
+  <!-- Navber -->
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="logo">
+          <i class="fas fa-book-open"></i>
+          <span>BookLibrary</span>
+        </a>
+
+        <button type="button" id="menuToggle" class="mobile-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div id="navbarContent" class="navbar-content">
+          <form class="search-form" role="search">
+            <div class="search-input-container">
+              <i class="fas fa-search search-icon"></i>
+              <input type="search" placeholder="Search books..." aria-label="Search books" id="search-box">
+            </div>
+          </form>
+
+          <div class="navbar-actions">
+            <div class="view-controls">
+              <button id="gridView" type="button" class="view-btn active" aria-label="Grid view">
+                <i class="fas fa-th-large"></i>
+              </button>
+              <button id="listView" type="button" class="view-btn" aria-label="List view">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+
+            <div class="dropdown">
+              <button id="sortDropdown" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                <i class="fas fa-sort"></i>
+                <span id="selectedSort">Title (A-Z)</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                <li><a href="#" class="dropdown-item" onclick="handleSortSelection(this)">Title (A-Z)</a></li>
+                <li><a href="#" class="dropdown-item" onclick="handleSortSelection(this)">Title (Z-A)</a></li>
+                <li><a href="#" class="dropdown-item" onclick="handleSortSelection(this)">Date (Oldest)</a></li>
+                <li><a href="#" class="dropdown-item" onclick="handleSortSelection(this)">Date (Newest)</a></li>
+              </ul>
+
+            </div>
+
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Main Container  -->
+  <main class="books-container grid-view" id="books-container">
+  </main>
+  <!-- Pagination -->
+  <div class="pagination-container">
+    <button id="prev" class="pagination-btn">
+      <i class="fas fa-chevron-left"></i> Previous
+    </button>
+    <span class="page-number">Page <span id="currentPage">1</span></span>
+    <button id="next" class="pagination-btn">
+      Next <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+
+</html>

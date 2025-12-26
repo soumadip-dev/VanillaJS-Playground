@@ -1,0 +1,479 @@
+/* ===== GLOBAL STYLES & VARIABLES ===== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+:root {
+  --primary-blue: #0065ff;
+  --hover-blue: #0051cc;
+  --background-light: #f8f9fd;
+  --background-dark: #0d1117;
+  --text-light: #2d343f;
+  --text-dark: #e6edf3;
+  --border-light: #e1e4e8;
+  --border-dark: #30363d;
+  --board-bg-light: #ffffff;
+  --board-bg-dark: #161b22;
+}
+
+/* ===== BASE LAYOUT ===== */
+body {
+  background: var(--background-light);
+  color: var(--text-light);
+  padding: 24px;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ===== NAVIGATION BAR ===== */
+nav {
+  width: 100%;
+  max-width: 1900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--board-bg-light);
+  padding: 16px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+  border: 1px solid var(--border-light);
+}
+
+nav h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin: 0;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-buttons button {
+  padding: 10px 20px;
+  background: var(--primary-blue);
+  color: white;
+  border: 1px solid var(--primary-blue);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  backdrop-filter: blur(5px);
+  letter-spacing: 1px;
+}
+
+.nav-buttons button:hover {
+  background: var(--hover-blue);
+  transform: scale(1.01);
+  box-shadow: 0px 4px 15px black;
+}
+
+#dark-mode-toggle {
+  font-size: 20px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.github-icon {
+  color: white;
+  background: var(--primary-blue);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-blue);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.github-icon:hover {
+  background: var(--hover-blue);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.github-icon i {
+  font-size: 20px;
+}
+
+/* Dark mode styles for GitHub icon */
+body.dark-mode .github-icon {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .github-icon:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ===== BOARD CONTAINER & COLUMNS ===== */
+#board-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1900px;
+}
+
+.board {
+  flex: 1 1 calc(16% - 24px);
+  min-width: 300px;
+  background: var(--board-bg-light);
+  padding: 16px;
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 780px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.board-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+}
+
+.board-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.edit-board-icon,
+.delete-board-icon {
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b778c;
+  transition: color 0.2s ease;
+}
+
+.edit-board-icon:hover {
+  color: var(--primary-blue);
+}
+
+.delete-board-icon:hover {
+  color: #dc3545;
+}
+
+.task-count {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6b778c;
+  background: #f0f0f0;
+  margin-left: 8px;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+/* ===== TASK LIST & ITEMS ===== */
+.task-list {
+  overflow-y: auto;
+  flex-grow: 1;
+  min-height: 200px;
+  max-height: 60vh;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.task {
+  background: var(--board-bg-light);
+  color: var(--text-light);
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 14px;
+  border-left: 6px solid #ff5722;
+  border: 1px solid var(--border-light);
+  border-left: 6px solid var(--primary-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.task:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 2px 8px rgba(0, 101, 255, 0.1);
+  cursor: grab;
+}
+
+.task.dragging {
+  opacity: 0.8;
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 12px rgba(0, 101, 255, 0.2);
+  cursor: grabbing;
+}
+
+.task-list.drag-over {
+  background-color: rgba(0, 101, 255, 0.03);
+  border: 1px dashed var(--primary-blue);
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.task-date {
+  font-size: 12px;
+  color: #6b778c;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b778c;
+  transition: color 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: var(--primary-blue);
+}
+
+.delete-icon:hover {
+  color: #dc3545;
+}
+
+/* ===== TASK INPUT & BUTTONS ===== */
+.task-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 12px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.task-input:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+.add-task-btn {
+  padding: 8px 16px;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.add-task-btn:hover {
+  background: var(--hover-blue);
+}
+
+/* ===== MODAL DIALOGS ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-container {
+  background-color: var(--board-bg-light);
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 2px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border: 1px solid var(--border-light);
+  color: var(--text-light);
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+input[type='text'],
+input[type='color'] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input[type='color'] {
+  height: 40px;
+  padding: 5px;
+}
+
+.modal button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #0056b3;
+}
+
+/* ===== DARK MODE STYLES ===== */
+body.dark-mode {
+  background: var(--background-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode nav {
+  background: var(--board-bg-dark);
+  border-color: var(--border-dark);
+}
+
+body.dark-mode .board {
+  background: var(--board-bg-dark);
+  border-color: var(--border-dark);
+}
+
+body.dark-mode .task {
+  color: var(--text-dark);
+  background: var(--board-bg-dark);
+  border-color: var(--border-dark);
+}
+
+body.dark-mode .task:hover {
+  border-color: var(--primary-blue);
+}
+
+body.dark-mode .task-input {
+  background: var(--board-bg-dark);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .task-date {
+  color: #8b949e;
+}
+
+body.dark-mode .task-input::placeholder {
+  color: #888;
+}
+
+body.dark-mode .nav-buttons button {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .edit-icon:hover {
+  color: #ffd700;
+}
+
+body.dark-mode .delete-icon:hover {
+  color: #ff6b6b;
+}
+
+body.dark-mode .task-list.drag-over {
+  border-color: #4dabf7;
+  background-color: rgba(77, 171, 247, 0.1);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #30363d;
+}
+
+body.dark-mode .color-dot {
+  border: 1px solid white;
+}
+
+/* ===== SCROLLBAR STYLES ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5da;
+  border-radius: 0;
+}
+
+body.dark-mode .modal-container {
+  background: var(--board-bg-dark);
+  border-color: var(--border-dark);
+}
+
+body.dark-mode .close {
+  color: #888;
+}
+
+body.dark-mode .close:hover {
+  color: #ffffff;
+}
+
+body.dark-mode .modal h2 {
+  color: #0056b3;
+}

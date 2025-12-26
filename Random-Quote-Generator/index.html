@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote App</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="light-mode">
+  <nav>
+    <h1>Random Quote App</h1>
+    <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+  </nav>
+
+  <main id="container">
+    <div id="quote-container">
+      <h2 id="quote-heading">Quote of the Day</h2>
+      <div id="quote-content">
+        <p id="quote-text">Click the "New Quote" button to generate a new quote!</p>
+      </div>
+      <div id="quote-actions">
+        <button id="new-quote-btn">New Quote</button>
+        <div class="action-icons">
+          <i id="copy-btn" class="fa-solid fa-copy" title="Copy Quote"></i>
+          <i id="tweet-btn" class="fa-brands fa-twitter" title="Share on Twitter"></i>
+          <i id="export-btn" class="fa-solid fa-download" title="Export as Image"></i>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD SECTION -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<!-- BODY SECTION -->
+
+<body class="light-mode">
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <h1>Kanban Board</h1>
+    <div class="nav-buttons">
+      <a href="https://github.com/soumadip-dev/Intermediate-Projects-JS/tree/main/Kanban-Board" class="github-icon"
+        aria-label="GitHub repository">
+        <i class="fab fa-github"></i>
+      </a>
+      <button id="add-board-btn" onclick="showBoardCreationModal()">Add New Board</button>
+      <button id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <!-- MAIN BOARD CONTAINER -->
+  <main id="board-container">
+    <!-- TO DO BOARD -->
+    <section class="board" data-color="#007bff">
+      <div class="board-header">
+        <h2>
+          <span class="color-dot" style="background-color: #007bff;"></span>
+          To Do <span id="todo-count" class="task-count">0</span>
+        </h2>
+        <div class="board-actions">
+          <i class="fas fa-edit edit-board-icon"></i>
+          <i class="fas fa-trash delete-board-icon"></i>
+        </div>
+      </div>
+      <div id="todo" class="task-list">
+
+      </div>
+      <input type="text" class="task-input" id="todo-input" placeholder="Enter a new task">
+      <button class="add-task-btn" onclick="addNewTask('todo')">+ Add Task</button>
+    </section>
+
+    <!-- DOING BOARD -->
+    <section class="board" data-color="#ffc107">
+      <div class="board-header">
+        <h2>
+          <span class="color-dot" style="background-color: #ffc107;"></span>
+          Doing <span id="doing-count" class="task-count">0</span>
+        </h2>
+        <div class="board-actions">
+          <i class="fas fa-edit edit-board-icon"></i>
+          <i class="fas fa-trash delete-board-icon"></i>
+        </div>
+      </div>
+      <div id="doing" class="task-list"></div>
+      <input type="text" class="task-input" id="doing-input" placeholder="Enter a new task">
+      <button class="add-task-btn" onclick="addNewTask('doing')">+ Add Task</button>
+    </section>
+
+    <!-- DONE BOARD -->
+    <section class="board" data-color="#28a745">
+      <div class=" board-header">
+        <h2>
+          <span class="color-dot" style="background-color: #28a745;"></span>
+          Done <span id="done-count" class="task-count">0</span>
+        </h2>
+        <div class="board-actions">
+          <i class="fas fa-edit edit-board-icon"></i>
+          <i class="fas fa-trash delete-board-icon"></i>
+        </div>
+      </div>
+      <div id="done" class="task-list"></div>
+      <input type="text" class="task-input" id="done-input" placeholder="Enter a new task">
+      <button class="add-task-btn" onclick="addNewTask('done')">+ Add Task</button>
+    </section>
+  </main>
+
+  <!-- BOARD CREATION MODAL -->
+  <div id="board-model" class="modal">
+    <div class="modal-container">
+      <span class="close" onclick="closeBoardModel()">&times;</span>
+      <h2>Create new Board</h2>
+      <input type="text" id="board-name-input" placeholder="Enter board name">
+      <input type="color" id="board-color-input" value="#FF0000">
+      <button onclick="createBoardFromModal()">Create Board</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
