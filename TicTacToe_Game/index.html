@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Tic Tac Toe</title>
+    <link href="./style.css" rel="stylesheet">
+    <link href="./assets/favicon.png" rel="shortcut icon" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>TIC TAC TOE</li>
+        </ul>
+    </nav>
+    <div class="gameContainer">
+        <div class="container">
+            <div class="row">
+                <div class="col bt-0 bl-0" id="0" onclick="handleClick(this)"></div>
+                <div class="col bt-0" id="1" onclick="handleClick(this)"></div>
+                <div class="col bt-0 br-0" id="2" onclick="handleClick(this)"></div>
+            </div>
+            <div class="row">
+                <div class="col bl-0" id="3" onclick="handleClick(this)"></div>
+                <div class="col" id="4" onclick="handleClick(this)"></div>
+                <div class="col br-0" id="5" onclick="handleClick(this)"></div>
+            </div>
+            <div class="row">
+                <div class="col bb-0 bl-0" id="6" onclick="handleClick(this)"></div>
+                <div class="col bb-0" id="7" onclick="handleClick(this)"></div>
+                <div class="col bb-0 br-0" id="8" onclick="handleClick(this)"></div>
+            </div>
+        </div>
+        <div class="gameInfo">
+            <h1>Welcome to Tic Tac Toe</h1>
+            <div class="infoContainer">
+                <span id="info">Player X turn</span>
+                <img alt="Winning animation" src="./assets/excited.gif">
+            </div>
+            <div class="resetContainer">
+                <button id="reset-Button" onclick="resetGame()">Reset Game</button>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
