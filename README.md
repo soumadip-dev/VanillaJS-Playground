@@ -1,12 +1,14 @@
 <h1 align="center">
-  <br>
-  VanillaJS Playground
-  <br>
+  VanillaJS Playground 🔥
 </h1>
 
 <h3 align="center" style="margin: 20px 0;">
   A hands-on playground for learning core JavaScript concepts using pure (vanilla) JavaScript through small interactive projects
 </h3>
+
+<div align="center">
+  <img src="./Practise/banner.png" alt="Banner" width="900">
+</div>
 
 ---
 
@@ -28,7 +30,7 @@
 
 ---
 
-## 🛠️ Installation
+## 🤸 Installation
 
 ```bash
 git clone https://github.com/soumadip-dev/VanillaJS-Playground.git
