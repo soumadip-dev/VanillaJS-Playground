@@ -7,7 +7,7 @@
 </h3>
 
 <div align="center">
-  <img src="./Practise/banner.png" alt="Banner" width="900">
+  <img src="./Practise/banner.jpg" alt="Banner" width="900">
 </div>
 
 ---
